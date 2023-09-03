@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yummy</title>
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+
+
+
+
+
+
+    <div class="loading-page position-fixed">
+        <div class="sk-circle">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+          </div>
+    </div>
+
+
+
+
+    <nav class="nav-bar position-fixed bg-black py-4">
+        <div class="container h-100 d-flex flex-column justify-content-between">
+            <ul class="nav-links list-unstyled overflow-hidden">
+                <li class="nav-list mb-3 position-relative"><a data-custom="search" class=" text-white text-decoration-none" href="#">Search</a></li>
+                <li class="nav-list mb-3 position-relative"><a data-custom="category" class=" text-white text-decoration-none" href="#">Categories</a></li>
+                <li class="nav-list mb-3 position-relative"><a data-custom="area" class=" text-white text-decoration-none" href="#">Area</a></li>
+                <li class="nav-list mb-3 position-relative"><a data-custom="ingrediants" class=" text-white text-decoration-none" href="#">Ingrediants</a></li>
+                <li class="nav-list mb-3 position-relative"><a data-custom="contact" class=" text-white text-decoration-none" href="#">Contact Us</a></li>
+            </ul>
+            <div class="nav-bar-footer text-white">
+                <div class="icons">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-solid fa-globe"></i>
+
+                </div>
+                <p class="">Copyright Â© 2019 All Rights
+                    Reserved.</p>
+            </div>
+        </div>
+        <div class="nav-bar-close-open d-flex flex-column justify-content-between align-items-center position-absolute bg-white py-4 text-black">
+            <div class="logo"><img class="" src="./images/logo.png"></div>
+            <div class="open-close">
+                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-close"></i>
+            </div>
+           
+            <div class="links-icons d-flex flex-column">
+                <i class="fa-solid fa-globe mb-2"></i>
+                <i class="fa-solid fa-share-nodes mb-2"></i>
+            </div>
+        </div>
+    </nav>
+    <div class="home nav-list-item py-5">
+        <div class="container px-3">
+            <div class="home-meals row g-3 px-5 ">
+           
+            </div>
+            <div class="meal-details row d-none">
+
+            </div>
+        </div>
+    </div>
+    <div id="search" class=" nav-list-item d-none  text-white py-5">
+        <div class="container">
+            <div class="row my-3 g-2 p-5">
+                <div class="col-12 col-md-6">
+                    <input class="form-control bg-black text-white" type="search" name="search-by-name" id="search-by-name" placeholder="Search By Name">
+                </div>
+                <div class="col-12 col-md-6">
+                    <input class="form-control bg-black text-white" type="search" name="search-by-fName" id="search-by-fName" placeholder="Search By first letter">
+                </div>
+            </div>
+            <div class="row my-3 p-5 g-3 searched-meals">
+
+            </div>
+        </div>
+        </div>
+    <div id="category" class=" nav-list-item d-none text-white py-5">
+        <div class="container">
+            <div class="row g-3 p-5 all-categories">
+
+            </div>
+        </div>
+        
+    </div>
+    <div id="area" class=" nav-list-item d-none  text-white py-5">
+        <div class="container">
+            <div class="all-area p-5 row g-3">
+
+            </div>
+        </div>
+    </div>
+    <div id="ingrediants" class=" nav-list-item d-none  text-white py-5">
+        <div class="container">
+            <div class="all-ingred p-5 row g-3">
+
+            </div>
+        </div>
+        
+    </div>
+    <div id="contact" class=" nav-list-item d-none text-center text-white py-5">
+        <div class="container w-100 h-100 d-flex justify-content-center align-items-center flex-column">
+            <div class="contact row g-2">
+                <div class="col-12 col-sm-6">
+                <input type="text" id="userName" name="userName" placeholder="user name" class="form-control" >
+                <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Special characters and numbers not allowed</p>
+                </div>
+                <div class="col-12 col-sm-6"> 
+                <input type="email" id="userMail" name="userMail" placeholder="email" class="form-control" >
+                <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Email not valid *exemple@yyy.zzz</p>
+                </div>
+                <div class="col-12 col-sm-6"> 
+                    <input type="number" id="userPhone" name="userPhone" placeholder="phone" class="form-control" >
+                    <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Enter valid Phone Number</p>
+                </div>
+                    
+                    <div class="col-12 col-sm-6"> 
+                        <input type="number" id="age" name="age" placeholder="Age" class="form-control" >
+                        <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Enter valid age</p>
+                    </div>
+                <div class="col-12 col-sm-6"> 
+                    <input type="password" id="userPass" name="userPass" placeholder="password" class="form-control" >
+                    <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Enter valid password *Minimum eight characters, at least one letter and one number:*</p>
+                </div>
+                <div class="col-12 col-sm-6"> 
+                    <input type="password" id="userRePass" name="userPass" placeholder="retype password" class="form-control" >
+                    <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Enter valid repassword</p>
+                </div>
+            </div>
+           
+            <button class=" form-button  mt-4 btn btn-danger" disabled="true">submit</button>
+            
+            
+            
+            
+        </div>
+    </div>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
