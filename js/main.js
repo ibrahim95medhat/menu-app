@@ -28,9 +28,9 @@ console.log(inputsArr)
 console.log(navLists);
 // https://www.themealdb.com/api/json/v1/1/search.php?s=
 
-// self invoked fn to display home page
 
 
+// loading page 
 $(document).ready(()=>{
     $(".sk-circle").fadeOut(2500 , ()=>{
         $(".loading-page").fadeOut(2500 , ()=>{
@@ -39,11 +39,11 @@ $(document).ready(()=>{
     })
 
 });
-
+// self invoked fn to display home page
 ( function(){
     displayHomeMeals()
 })();
-
+// navlist
 Array.from(navLists).forEach((e)=>{
     e.addEventListener("click",(e)=>{
      if(navbar.style.left==="0px"){
@@ -189,17 +189,10 @@ Array.from(navLists).forEach((e)=>{
 
             inputsArr.forEach((e)=>
             {
-                e.addEventListener("blur",()=>
-                {
-                    inputsArr.forEach((e)=>{e.value===''? flag1=1:flag1=0; });
-
-                    Array.from(document.querySelectorAll(".warning-msg")).forEach((e)=>{
-                    if(!e.classList.contains("d-none"))
-                    {flag=1}
-                else
-                {flag=0}
-});
-               flag1===0 &&   flag===0  ? submitBtn.removeAttribute("disabled"):submitBtn.setAttribute("disabled","true");
+                 e.addEventListener("input",()=>
+                 {
+userNameValidation() && userEmailValidation() && userPhoneValidation() && userAgeValidation() && userPassValidation()&&userRePassValidation() ? submitBtn.removeAttribute("disabled"):submitBtn.setAttribute("disabled","true");
+                  
                 })
             })
           
@@ -218,15 +211,19 @@ $(navlists).animate({top:"300px"})
 
 $(openIcon).click((e)=>{
     $(navbar).animate({left:"0"},1000,()=>{
-        $(navlists).animate({top:"0"},500)
+        // update
+        $(".nav-list:nth-child(1)").animate({top:"0"},500)
+        $(".nav-list:nth-child(2)").animate({top:"0"},800)
+        $(".nav-list:nth-child(3)").animate({top:"0"},1100)
+        $(".nav-list:nth-child(4)").animate({top:"0"},1400)
+        $(".nav-list:nth-child(5)").animate({top:"0"},1900)
     })
     $(e.target).hide();
     $(closeIcon).show();
 })
 $(closeIcon).click((e)=>{
-    $(navbar).animate({left:-navbarWidth},1000,()=>{
-        $(navlists).animate({top:"300px"},500)
-    })
+    $(navlists).animate({top:"300px"},1000)
+    $(navbar).animate({left:-navbarWidth},1000)
     $(e.target).hide();
     $(openIcon).show();
 })
@@ -247,7 +244,7 @@ async function displayHomeMeals(){
    
     console.log(mealsArr)
     for (let i=0 ; i<mealsArr.length;i++){
-        mainRowElement.innerHTML+=` <div class=" col-12 col-lg-3">
+        mainRowElement.children[0].innerHTML+=` <div class=" col-12 col-lg-3">
         <div class="image-container rounded-3 overflow-hidden position-relative">
             <img class="w-100" src=${mealsArr[i].strMealThumb} alt="meal">
             <div class="overlay position-absolute w-100 h-100  d-flex align-items-center"><h2>${mealsArr[i].strMeal}</h2></div>
@@ -294,7 +291,7 @@ for (const [index,eachMeal] of mealsArr.entries()) {
       ingrediantArr.push(eachMeal[`strIngredient${i+1}`]);
           
       measurmentArr.push(eachMeal[`strMeasure${i+1}`]);
-   
+     
         }
          
     }
@@ -303,7 +300,7 @@ for (const [index,eachMeal] of mealsArr.entries()) {
     let mealDetails=document.querySelector(".meal-details");
     mealDetails.classList.remove("d-none");
     mainRowElement.classList.add("d-none");
-    mealDetails.innerHTML=` 
+    mealDetails.children[0].innerHTML=` 
     <div class="col-12 col-md-5 text-white">
     <div class="selectedImage">
     <img class="w-100" src=${src}>
@@ -317,14 +314,17 @@ for (const [index,eachMeal] of mealsArr.entries()) {
     <h5>Category:${category}</h5>
     <h5>Recipes :</h5>
     <div class="recips p-2">
-    <ul class="d-flex flex-wrap justify-content-around align-items-center list-unstyled">${ingrediantArr.map((e,index)=>{
-        return `<li class="bg-info p-2 my-3 rounded-4 text-center">${measurmentArr[index]}${e}</li>`
+    <ul class="d-flex flex-wrap justify-content-start align-items-center list-unstyled">${ingrediantArr.map((e,index)=>{
+        return `<li class="bg-info px-2 py-1 my-3 ms-2 rounded-4 text-center">${measurmentArr[index]}${e}</li>`
     }).join("")}
     </ul>
     </div>
-    <h5>tags:${tags ? tags : ""}</h5>
-    <button class="btn btn-primary"><a class="text-decoration-none text-white" href=${source}>source</a></button>
-    <button class="btn btn-danger"><a class="text-decoration-none text-white" href=${youtube}>youtube</a></button>
+    
+    <ul class="d-flex justify-content-start list-unstyled">tags:${tags ? tags.split(",").map((e)=>{return `<li class="rounded-5 bg-danger-subtle px-2 py-1 ms-2">${e}</li>`}).join(" ") : ""}</ul>
+    <div class="d-flex justify-content-start flex-wrap flex-sm-nowrap">
+    <button class="btn btn-primary ms-2 my-2"><a class="text-decoration-none text-white" href=${source} target="_blank">source</a></button>
+    <button class="btn btn-danger ms-2 my-2"><a class="text-decoration-none text-white" href=${youtube} target="_blank">youtube</a></button>
+    </div>
     </div>
     `
 
@@ -409,14 +409,14 @@ function displaySelectedMealFromUserSearch(res){
         <h5>Category:${category}</h5>
         <h5>Recipes :</h5>
         <div class="recips p-2">
-        <ul class="d-flex flex-wrap justify-content-around align-items-center list-unstyled">${ingrediantArr.map((e,index)=>{
-            return `<li class="bg-info p-2 my-3 rounded-4 text-center">${measurmentArr[index]}${e}</li>`
+        <ul class="d-flex flex-wrap justify-content-start align-items-center list-unstyled">${ingrediantArr.map((e,index)=>{
+            return `<li class="bg-info p-2 my-3 ms-2 rounded-4 text-center">${measurmentArr[index]}${e}</li>`
         }).join("")}
         </ul>
         </div>
-        <h5 class="p-3 ">tags:${tags ? tags : ""}</h5>
-        <button class="btn btn-primary"><a class="text-decoration-none text-white" href=${source}>source</a></button>
-        <button class="btn btn-danger"><a class="text-decoration-none text-white" href=${youtube}>youtube</a></button>
+        <ul class="d-flex justify-content-start list-unstyled">tags:${tags ? tags.split(",").map((e)=>{return `<li class="rounded-5 bg-danger-subtle px-2 py-1 ms-2">${e}</li>`}).join(" ") : ""}</ul>
+        <button class="btn btn-primary"><a class="text-decoration-none text-white" href=${source} target="_blank">source</a></button>
+        <button class="btn btn-danger"><a class="text-decoration-none text-white" href=${youtube} target="_blank">youtube</a></button>
         </div>
     
     `
@@ -512,14 +512,16 @@ for (let i=0;i<20;i++){
     <h5>Category:${category}</h5>
     <h5>Recipes :</h5>
     <div class="recips p-2">
-    <ul class="d-flex flex-wrap justify-content-around align-items-center list-unstyled">${ingrediantArr.map((e,index)=>{
-        return `<li class="bg-info p-2 my-3 rounded-4 text-center">${measurmentArr[index]}${e}</li>`
+    <ul class="d-flex flex-wrap justify-content-start align-items-center list-unstyled">${ingrediantArr.map((e,index)=>{
+        return `<li class="bg-info p-2 my-3 ms-2 rounded-4 text-center">${measurmentArr[index]}${e}</li>`
     }).join("")}
     </ul>
     </div>
-    <h5>tags:${tags ? tags : ""}</h5>
-    <button class="btn btn-primary"><a class="text-decoration-none text-white" href=${source}>source</a></button>
-    <button class="btn btn-danger"><a class="text-decoration-none text-white" href=${youtube}>youtube</a></button>
+    <ul class="d-flex justify-content-start list-unstyled">tags:${tags ? tags.split(",").map((e)=>{return `<li class="rounded-5 bg-danger-subtle px-2 py-1 ms-2">${e}</li>`}).join(" ") : ""}</ul>
+    <div class="d-flex justify-content-start flex-wrap flex-sm-nowrap">
+    <button class="btn btn-primary ms-2 my-2"><a class="text-decoration-none text-white" href=${source} target="_blank">source</a></button>
+    <button class="btn btn-danger ms-2 my-2"><a class="text-decoration-none text-white" href=${youtube} target="_blank">youtube</a></button>
+    </div>
     </div>
 
 `
@@ -613,15 +615,17 @@ function displaySelectedMealForSameArea(res){
         <h5>Category:${category}</h5>
         <h5>Recipes :</h5>
         <div class="recips p-2 ">
-        <ul class="d-flex flex-wrap justify-content-around align-items-center list-unstyled">${ingrediantArr.map((e,index)=>{
+        <ul class="d-flex flex-wrap justify-content-start align-items-center list-unstyled">${ingrediantArr.map((e,index)=>{
                  
-            return `<li class="bg-info p-2 my-3 rounded-4 text-center">${measurmentArr[index]}${e}</li>`
+            return `<li class="bg-info p-2 my-3 mx-2 rounded-4 text-center">${measurmentArr[index]}${e}</li>`
         }).join("")}
         </ul>
         </div>
-        <h5>tags:${tags ? tags : ""}</h5>
-        <button class="btn btn-primary"><a class="text-decoration-none text-white" href=${source}>source</a></button>
-        <button class="btn btn-danger"><a class="text-decoration-none text-white" href=${youtube}>youtube</a></button>
+        <ul class="d-flex justify-content-start list-unstyled">tags:${tags ? tags.split(",").map((e)=>{return `<li class="rounded-5 bg-danger-subtle px-2 py-1 ms-2">${e}</li>`}).join(" ") : ""}</ul>
+        <div class="d-flex justify-content-start flex-wrap flex-sm-nowrap">
+        <button class="btn btn-primary ms-2 my-2"><a class="text-decoration-none text-white" href=${source} target="_blank">source</a></button>
+        <button class="btn btn-danger ms-2 my-2"><a class="text-decoration-none text-white" href=${youtube} target="_blank">youtube</a></button>
+        </div>
         </div>
     
     `
@@ -723,17 +727,18 @@ async function searchMealsInEachIngrediant(ingrediantName){
                 <h5>Category:${category}</h5>
                 <h5>Recipes :</h5>
                 <div class="recips p-2">
-                <ul class="d-flex flex-wrap justify-content-around align-items-center list-unstyled">${ingrediantArr.map((e,index)=>{
+                <ul class="d-flex flex-wrap ms justify-content-start align-items-center list-unstyled">${ingrediantArr.map((e,index)=>{
                  
-                    return `<li class="bg-info p-2 my-3 rounded-4 text-center">${measurmentArr[index]}${e}</li>`
+                    return `<li class="bg-info p-2 my-3 ms-2 rounded-4 text-center">${measurmentArr[index]}${e}</li>`
                 }).join("")}
                 </ul>
                 </div>
-                <h5>tags:${tags ? tags : ""}</h5>
-                <button class="btn btn-primary"><a class="text-decoration-none text-white" href=${source}>source</a></button>
-                <button class="btn btn-danger"><a class="text-decoration-none text-white" href=${youtube}>youtube</a></button>
+                <ul class="d-flex justify-content-start list-unstyled">tags:${tags ? tags.split(",").map((e)=>{return `<li class="rounded-5 bg-danger-subtle px-2 py-1 ms-2">${e}</li>`}).join(" ") : ""}</ul>
+                <div class="d-flex justify-content-start flex-wrap flex-sm-nowrap">
+                <button class="btn btn-primary ms-2 my-2"><a class="text-decoration-none text-white" href=${source} target="_blank">source</a></button>
+                <button class="btn btn-danger ms-2 my-2"><a class="text-decoration-none text-white" href=${youtube} target="_blank">youtube</a></button>
                 </div>
-            
+                </div>
             `
             } 
 // end ingrediants
@@ -753,6 +758,7 @@ function distributeValidationFns(){
                 errorMsgEle.classList.remove("d-none");
                 console.log(userNameValidation())
                 userNameValidation()===true ? errorMsgEle.classList.add("d-none") : '';
+                
                 })  
                 break;
             case "userMail":
@@ -761,6 +767,7 @@ function distributeValidationFns(){
                     errorMsgEle.classList.remove("d-none");
                     console.log(userEmailValidation())
                     userEmailValidation()===true ? errorMsgEle.classList.add("d-none") : '';
+                 
                     })  
                 break;
             case "userPhone":
@@ -769,6 +776,7 @@ function distributeValidationFns(){
                     errorMsgEle.classList.remove("d-none");
                     console.log(userPhoneValidation())
                     userPhoneValidation()===true ? errorMsgEle.classList.add("d-none") : '';
+                    
                     })  
                 break;
             case 'age':
@@ -777,6 +785,7 @@ function distributeValidationFns(){
                     errorMsgEle.classList.remove("d-none");
                     console.log(userAgeValidation())
                     userAgeValidation()===true ? errorMsgEle.classList.add("d-none") : '';
+                    
                     })  
                 break;
             case 'userPass':
@@ -785,6 +794,7 @@ function distributeValidationFns(){
                     errorMsgEle.classList.remove("d-none");
                     console.log(userPassValidation())
                     userPassValidation()===true ? errorMsgEle.classList.add("d-none") : '';
+                   
                     })  
                 break;
             case 'userRePass':
@@ -793,6 +803,7 @@ function distributeValidationFns(){
                     errorMsgEle.classList.remove("d-none");
                     console.log(userRePassValidation())
                     userRePassValidation()===true ? errorMsgEle.classList.add("d-none") : '';
+                    
                     })  
                 break;
         
@@ -834,3 +845,18 @@ function userRePassValidation(){
 
 
 
+  //  inputsArr.forEach((e)=>{e.value===''? flag1=1:flag1=0; });
+                    //  Array.from(document.querySelectorAll(".warning-msg")).map( (e)=>{ 
+                       
+                    //     setTimeout(()=>{
+                    //         if(!e.classList.contains("d-none"))
+                    //         {
+                    //              flag=1;
+                    //         }
+                    //     },100)
+                    //     if (flag===1){
+                    //         return flag
+                    //     }
+                    //   });
+                     
+                    //  flag===0 ? submitBtn.removeAttribute("disabled"):submitBtn.setAttribute("disabled","true");

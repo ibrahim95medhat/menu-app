@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>yummy</title>
+    <link rel="icon" type="images" href="./images/logo.png" />
     <link rel="stylesheet" href="./css/all.min.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/main.css">
@@ -69,12 +70,16 @@
         </div>
     </nav>
     <div class="home nav-list-item py-5">
-        <div class="container px-3">
-            <div class="home-meals row g-3 px-5 ">
-           
-            </div>
-            <div class="meal-details row d-none">
+        <div class="container">
+            <div class="home-meals  ">
+                <div class="container row g-3 px-5">
 
+                </div>
+            </div>
+            <div class="meal-details  d-none">
+                <div class="container row ">
+
+                </div>
             </div>
         </div>
     </div>
@@ -89,7 +94,7 @@
                 </div>
             </div>
             <div class="row my-3 p-5 g-3 searched-meals">
-
+    
             </div>
         </div>
         </div>
@@ -118,39 +123,37 @@
     </div>
     <div id="contact" class=" nav-list-item d-none text-center text-white py-5">
         <div class="container w-100 h-100 d-flex justify-content-center align-items-center flex-column">
-            <div class="contact row g-2">
-                <div class="col-12 col-sm-6">
-                <input type="text" id="userName" name="userName" placeholder="user name" class="form-control" >
-                <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Special characters and numbers not allowed</p>
-                </div>
-                <div class="col-12 col-sm-6"> 
-                <input type="email" id="userMail" name="userMail" placeholder="email" class="form-control" >
-                <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Email not valid *exemple@yyy.zzz</p>
-                </div>
-                <div class="col-12 col-sm-6"> 
-                    <input type="number" id="userPhone" name="userPhone" placeholder="phone" class="form-control" >
-                    <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Enter valid Phone Number</p>
-                </div>
-                    
-                    <div class="col-12 col-sm-6"> 
-                        <input type="number" id="age" name="age" placeholder="Age" class="form-control" >
-                        <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Enter valid age</p>
+            <form>
+                <div class="contact row g-2">
+                    <div class="col-12 col-sm-6">
+                    <input type="text" id="userName" name="userName" placeholder="user name" class="form-control" >
+                    <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Special characters and numbers not allowed</p>
                     </div>
-                <div class="col-12 col-sm-6"> 
-                    <input type="password" id="userPass" name="userPass" placeholder="password" class="form-control" >
-                    <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Enter valid password *Minimum eight characters, at least one letter and one number:*</p>
+                    <div class="col-12 col-sm-6"> 
+                    <input type="email" id="userMail" name="userMail" placeholder="email" class="form-control" >
+                    <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Email not valid *exemple@yyy.zzz</p>
+                    </div>
+                    <div class="col-12 col-sm-6"> 
+                        <input type="number" id="userPhone" name="userPhone" placeholder="phone" class="form-control" >
+                        <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Enter valid Phone Number</p>
+                    </div>
+                        
+                        <div class="col-12 col-sm-6"> 
+                            <input type="number" id="age" name="age" placeholder="Age" class="form-control" >
+                            <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Enter valid age</p>
+                        </div>
+                    <div class="col-12 col-sm-6"> 
+                        <input type="password" id="userPass" name="userPass" placeholder="password" class="form-control" >
+                        <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Enter valid password *Minimum eight characters, at least one letter and one number:*</p>
+                    </div>
+                    <div class="col-12 col-sm-6"> 
+                        <input type="password" id="userRePass" name="userPass" placeholder="retype password" class="form-control" >
+                        <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Enter valid repassword</p>
+                    </div>
                 </div>
-                <div class="col-12 col-sm-6"> 
-                    <input type="password" id="userRePass" name="userPass" placeholder="retype password" class="form-control" >
-                    <p class="warning-msg d-none rounded-3 bg-info py-4 mt-1">Enter valid repassword</p>
-                </div>
-            </div>
-           
-            <button class=" form-button  mt-4 btn btn-danger" disabled="true">submit</button>
-            
-            
-            
-            
+                <button class=" form-button  mt-4 btn btn-danger" disabled="true">submit</button>
+            </form>
+                
         </div>
     </div>
     <script src="./js/bootstrap.bundle.min.js"></script>
