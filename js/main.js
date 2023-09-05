@@ -227,6 +227,9 @@ $(closeIcon).click((e)=>{
     $(e.target).hide();
     $(openIcon).show();
 })
+$(".link").click(()=>{
+    $(navlists).animate({top:"300px"},1000);
+})
 // end navbar- jquery
 
 
